@@ -1,4 +1,9 @@
+stages:
+  - build
+  - test
+
 build website:
+  stage: build
   image: node
   script:
     - cd static-website
@@ -8,3 +13,9 @@ build website:
   artifacts:
     paths:
       - ./static-website/public
+
+test artifact:
+  stage: test
+  script:
+    - grep "Gatsby" ./static-website/public/index.html
+    - grep "XXXXXXXXX" ./static-website/public/index.html
