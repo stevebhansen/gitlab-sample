@@ -24,6 +24,7 @@ test website:
   stage: test
   image: node
   script:
+    - cd static-website
     - npm install
     - npm install -g gatsby-cli
     - gatsby serve &
