@@ -1,4 +1,5 @@
 build website:
+  image: node
   script:
     - cd static-website
     - npm install
