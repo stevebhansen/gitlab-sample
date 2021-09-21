@@ -16,6 +16,15 @@ build website:
 
 test artifact:
   stage: test
+  image: alpine
   script:
-    - grep "Gatsby" ./static-website/public/index.html
-    - grep "XXXXXXXXX" ./static-website/public/index.html
+    - grep -q "Gatsby" ./static-website/public/index.html
+
+test website:
+  stage: test
+  image: node
+  script:
+    - npm install
+    - npm install -g gatsby-cli
+    - gatsby serve
+    - curl "http://localhost:9000" | grep -q "Gatsby"
